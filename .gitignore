@@ -7,3 +7,4 @@
 terraform.tfstate
 *.tfstate*
 terraform.tfvars
+debug2.txt
