@@ -1,9 +1,8 @@
-
 terraform {
-  backend "consul" {
-    address = "192.168.10.51:8500"
-    scheme  = "http"
-    path    = "vpc-urbn8/terraform_state"
+  backend "s3" {
+    bucket = "urbn8-terraform"
+    key    = "network/terraform.tfstate"
+    region = "eu-central-1"
   }
 }
 
