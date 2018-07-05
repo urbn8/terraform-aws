@@ -13,7 +13,11 @@ resource "aws_vpc" "default" {
   enable_dns_hostnames = true
 
   tags {
-    Name = "urbn8-vpc"
+    Name = "${var.domain}"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 
@@ -25,6 +29,10 @@ resource "aws_subnet" "public-subnet-a" {
 
   tags {
     Name = "Public Subnet-${var.zones[0]}"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 resource "aws_subnet" "private-subnet-a" {
@@ -34,6 +42,10 @@ resource "aws_subnet" "private-subnet-a" {
 
   tags {
     Name = "Private Subnet-${var.zones[0]}"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 # Define the public and private subnet Zone B
@@ -44,6 +56,10 @@ resource "aws_subnet" "public-subnet-b" {
 
   tags {
     Name = "Public Subnet-${var.zones[1]}"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 resource "aws_subnet" "private-subnet-b" {
@@ -53,6 +69,10 @@ resource "aws_subnet" "private-subnet-b" {
 
   tags {
     Name = "Private Subnet-${var.zones[1]}"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 # Define the public and private subnet Zone C
@@ -63,6 +83,10 @@ resource "aws_subnet" "public-subnet-c" {
 
   tags {
     Name = "Public Subnet-${var.zones[2]}"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 resource "aws_subnet" "private-subnet-c" {
@@ -72,6 +96,10 @@ resource "aws_subnet" "private-subnet-c" {
 
   tags {
     Name = "Private Subnet-${var.zones[2]}"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 
@@ -81,6 +109,10 @@ resource "aws_internet_gateway" "gw" {
 
   tags {
     Name = "VPC-IGW-URBN8"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 
@@ -103,6 +135,10 @@ resource "aws_route_table" "web-public-rt" {
 
   tags {
     Name = "Public-Subnet-RT"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 
@@ -125,6 +161,10 @@ resource "aws_route_table_association" "web-public-rt-subnet-c" {
 resource "aws_vpn_gateway" "vpn_gateway" {
   tags {
     Name = "EU-VPN-GW"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 
@@ -141,6 +181,10 @@ resource "aws_customer_gateway" "customer_gateway" {
 
   tags {
     Name = "VN_VNPT"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
 
@@ -151,5 +195,9 @@ resource "aws_vpn_connection" "main" {
   static_routes_only  = true
   tags {
     Name = "VNOFFICE"
+    Infra             = "${var.domain}"
+    Environment       = "${var.env}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.env}.${var.domain}"
   }
 }
