@@ -1,5 +1,5 @@
 output "cluster_name" {
-  value = "kube.${var.env}.${var.domain}"
+  value = "${var.env}.${var.domain}"
 }
 
 output "state_store" {

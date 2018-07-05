@@ -1,0 +1,27 @@
+{
+  "Comment": "Create a subdomain NS record in the parent domain",
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "dev.phanbook.com",
+        "Type": "NS",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "ns-1509.awsdns-60.org"
+          },
+          {
+            "Value": "ns-22.awsdns-02.com"
+          },
+          {
+            "Value": "ns-1020.awsdns-63.net"
+          },
+          {
+            "Value": "ns-1998.awsdns-57.co.uk"
+          }
+        ]
+      }
+    }
+  ]
+}

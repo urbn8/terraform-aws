@@ -34,3 +34,8 @@ terraform plan
 terraform apply
 
 ```
+
+
+## Refer
+
+[Deploy Kubernetes in an Existing AWS VPC with Kops and Terraform](https://ryaneschinger.com/blog/kubernetes-aws-vpc-kops-terraform/)
