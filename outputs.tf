@@ -54,3 +54,7 @@ output "aws_vpn_connect" {
   value = "${aws_vpn_connection.main.id}"
 }
 
+output "security_group_id" {
+  description = "The ID of the security group"
+  value       = "${aws_security_group.sg-office.id},${aws_security_group.sg-public.id}, ${aws_security_group.sg-default.id},${aws_security_group.sg-db.id}"
+}
