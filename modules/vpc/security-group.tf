@@ -19,6 +19,10 @@ resource "aws_security_group" "sg-office"{
 
   tags {
     Name = "Prod-office-access"
+    Infra             = "${var.domain}"
+    Environment       = "${var.environment}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.environment}.${var.domain}"
   }
 }
 
@@ -50,6 +54,10 @@ resource "aws_security_group" "sg-public"{
   vpc_id="${aws_vpc.default.id}"
   tags {
     Name = "PublicAccessProduction"
+    Infra             = "${var.domain}"
+    Environment       = "${var.environment}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.environment}.${var.domain}"
   }
 }
 
@@ -74,6 +82,10 @@ resource "aws_security_group" "sg-default"{
   vpc_id="${aws_vpc.default.id}"
   tags {
     Name = "Prod-default"
+    Infra             = "${var.domain}"
+    Environment       = "${var.environment}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.environment}.${var.domain}"
   }
 }
 
@@ -169,5 +181,9 @@ resource "aws_security_group" "sg-db"{
 
   tags {
     Name = "Prod-databases-clusters"
+    Infra             = "${var.domain}"
+    Environment       = "${var.environment}"
+    Terraformed       = "true"
+    KubernetesCluster = "${var.environment}.${var.domain}"
   }
 }

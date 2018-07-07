@@ -1,5 +1,5 @@
 output "cluster_name" {
-  value = "${var.env}.${var.domain}"
+  value = "${var.environment}.${var.domain}"
 }
 
 output "state_store" {

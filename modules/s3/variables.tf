@@ -7,10 +7,17 @@ variable "zones" {
   default = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
 }
 
-variable "env" {
-  description = "Environment"
-  default = "staging"
+variable "s3_bucket" {
+  description = "Your bucket"
 }
+
+variable "environment" {
+  description = "Your environment"
+}
+
 variable "domain" {
-  default = "urbn8.com"
+	description = "Your domain"
+}
+variable "prevent_destroy_s3" {
+	default = 1
 }
