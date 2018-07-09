@@ -6,16 +6,17 @@ terraform {
   }
 }
 
-module "s3" {
-  source = "../../modules/s3"
-  environment = "dev"
-  domain = "phanbook.com"
-  s3_bucket="kubernetes-dev-phanbook.com"
-}
-
-# module "slack" {
-# 	source = "../../modules/slack"
-# 	slack_message_deploy = "Deploy or update the VPC:${module.vpc.vpc_id} at time: ${timestamp()}"
-# 	slack_message_destroy = "Destroy the VPC:${module.vpc.vpc_id} at time: ${timestamp()}"
-
+# #Only work for the first time to create s3 to store kops state
+# module "s3" {
+#   source = "../../modules/s3"
+#   environment = "dev"
+#   domain = "phanbook.com"
+#   s3_bucket="kubernetes-dev-phanbook.com"
 # }
+
+module "slack" {
+	source = "../../modules/slack"
+	slack_message_deploy = "Deploy or update the kubernetes at time: ${timestamp()}"
+	slack_message_destroy = "Destroy the kubernetes at time: ${timestamp()}"
+
+}
