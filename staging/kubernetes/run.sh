@@ -1,16 +1,6 @@
 #!/bin/bash
 set -eo pipefail
 
-if [[ $1 == 's3' ]]; then
-	terraform init
-	terraform apply
-fi
-if [[ $1 == 'destroy' ]]; then
-	mv main.tf main.bk
-	terraform destroy
-	mv main.bk main.tf
-fi
-
 if [[ $1 == 'prepare' ]]; then
 	if [[ ! -d ".terraform" ]]; then
 		echo "You need create s3 bucket to store state kops firstly. To do it running the command ./run.sh s3"

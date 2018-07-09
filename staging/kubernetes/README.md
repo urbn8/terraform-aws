@@ -3,17 +3,17 @@
 Before deploy kubernets we need few parameters such as KOPS_STATE_STORE, NAME, ZONE, etc.
 
 ```
-export NAME=dev.phanbook.com
-export KOPS_STATE_STORE=s3://kubernetes-dev-phanbook.com
+export NAME="staging.urbn8.io"
+export KOPS_STATE_STORE="s3://kubernetes-staging-urbn8.io"
 export ZONES="eu-central-1a,eu-central-1b,eu-central-1c"
 export MASTER_ZONE="eu-central-1a,eu-central-1b,eu-central-1c"
-export VPC_ID=$(terraform output vpc_id)
-export CLUSTER_MASTER_SIZE="t2.nano"
-export CLUSTER_NODE_SIZE="t2.nano"
+export CLUSTER_MASTER_SIZE="t2.micro"
+export CLUSTER_NODE_SIZE="t2.medium"
 export K8S_VERSION="1.9.6"
-export CLUSTER_NODE_COUNT="3"
-export CLUSTER_MASTER_COUNT="3"
+export CLUSTER_NODE_COUNT=3
+export CLUSTER_MASTER_COUNT=3
 export AWS_KEYPAIR_PUB_KEY_PATH="~/.ssh/id_rsa.pub"
+export VPC_ID="vpc-23124148"
 
 ```
 
@@ -52,3 +52,7 @@ Becuase sometime we need keep s3 store version deploy kubernetes to deploy agian
 ./run.sh destroy
 
 ```
+
+### Note
+
+Sometime 

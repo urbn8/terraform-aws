@@ -1,3 +1,7 @@
+output "cluster_name" {
+  value = "staging.urbn8.io"
+}
+
 output "master_security_group_ids" {
   value = ["${aws_security_group.masters-staging-urbn8-io.id}"]
 }
@@ -507,7 +511,7 @@ resource "aws_nat_gateway" "eu-central-1c-staging-urbn8-io" {
 resource "aws_route" "0-0-0-0--0" {
   route_table_id         = "${aws_route_table.staging-urbn8-io.id}"
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = "igw-31b1e859"
+  gateway_id             = "igw-b4aaf3dc"
 }
 
 resource "aws_route" "private-eu-central-1a-0-0-0-0--0" {
