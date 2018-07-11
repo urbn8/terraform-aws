@@ -35,16 +35,15 @@ resource "aws_security_group_rule" "bal_ssh" {
   security_group_id        = "${aws_security_group.balancer.id}"
 }
 
-## mongo has to talk to itself
-# resource "aws_security_group_rule" "bal_mongo_self" {
-#   # Mongo necessary port range
-#   type                     = "ingress"
-#   from_port                = 27017
-#   to_port                  = 27017
-#   protocol                 = "tcp"
-#   source_security_group_id = "${aws_security_group.node.id}"
-#   security_group_id        = "${aws_security_group.balancer.id}"
-# }
+## allow mongo inbound from load balancer to cluster
+resource "aws_security_group_rule" "bal_host_mongo" {
+  type                     = "ingress"
+  from_port                = 27017
+  to_port                  = 27017
+  protocol                 = "tcp"
+  source_security_group_id = "${aws_security_group.host.id}"
+  security_group_id        = "${aws_security_group.balancer.id}"
+}
 
 ## external mongo access
 resource "aws_security_group_rule" "bal_mongo" {
@@ -118,8 +117,4 @@ resource "aws_route53_record" "mongo" {
     zone_id                = "${element(aws_elb.mongo.*.zone_id, count.index)}"
     evaluate_target_health = false
   }
-}
-
-output "security_group_id" {
-  value = "${aws_security_group.balancer.id}"
 }

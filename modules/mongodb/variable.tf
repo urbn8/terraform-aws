@@ -76,7 +76,8 @@ variable "replica_set_name" {
   type = "map"
 
   default = {
-    "dev" = "mongo1"
+    "dev"     = "mongo-rs"
+    "staging" = "mongo-rs"
   }
 
   description = "Mongo replica set name"
@@ -85,13 +86,13 @@ variable "replica_set_name" {
 variable "root_vol_size" {
   type        = "string"
   description = "Space (in Gigabytes) to give to the instance root disk"
-  default     = "24"
+  default     = "8"
 }
 
 variable "vol_size" {
   type        = "string"
   description = "Space (in Gigabytes) to give to MongoDB"
-  default     = "100"
+  default     = "20"
 }
 
 variable "domain" {
