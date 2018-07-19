@@ -56,7 +56,7 @@ resource "aws_launch_configuration" "mongo" {
   image_id        = "${data.aws_ami.mongo.id}"
   instance_type   = "${var.instance_type}"
   name_prefix     = "${var.environment}-mongo-"
-  security_groups = ["${aws_security_group.host.id}"]
+  security_groups = ["${aws_security_group.host.id}", "sg-014ce16d"]
   user_data       = "${data.template_file.userdata.rendered}"
   key_name        = "${var.key_name}"
 

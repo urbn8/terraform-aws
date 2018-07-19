@@ -7,16 +7,18 @@ terraform {
 }
 
 module "mongodb" {
-  source                 = "../../modules/mongodb"
-  environment            = "staging"
-  domain                 = "urbn8.io"
-  vpc_id                 = "vpc-23124148"
-  dns_zone               = "ZTSLDH58UVUDZ"
-  mongo_security_group   = ["sg-8d9c46e1", "sg-6192480d"]
-  ssh_security_group     = ["sg-6192480d"]
-  bastion_security_group = "sg-8d9c46e1"
+  source               = "../../modules/mongodb"
+  environment          = "staging"
+  domain               = "urbn8.io"
+  vpc_id               = "vpc-efc99484"
+  dns_zone             = "ZTSLDH58UVUDZ"
+  mongo_security_group = ["sg-3871dc54", "sg-014ce16d"]
+  ssh_security_group   = ["sg-014ce16d"]
+
+  # Allow each node can access mongodb
+  bastion_security_group = "sg-3871dc54"
   key_name               = "frankfurt"
-  private_subnets        = ["subnet-58494f33", "subnet-5166251c", "subnet-afbec3d2"]
+  private_subnets        = ["subnet-2b616140", "subnet-4b9de236", "subnet-82216ccf"]
   vol_size               = "10"
 }
 

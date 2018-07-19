@@ -19,3 +19,10 @@ terraform plan
 terraform apply
 
 ```
+
+### Note EBS store
+
+```
+chown mongodb:mongodb /mnt/db/mongodb/
+
+```

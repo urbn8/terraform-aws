@@ -56,6 +56,26 @@ resource "aws_security_group_rule" "bal_mongo" {
   security_group_id        = "${aws_security_group.balancer.id}"
 }
 
+resource "aws_security_group_rule" "bal_mongo-vn-office" {
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  security_group_id = "${aws_security_group.balancer.id}"
+
+  cidr_blocks = ["192.168.9.0/24", "192.168.10.0/24"]
+}
+
+resource "aws_security_group_rule" "bal_ssh-vn-office" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  security_group_id = "${aws_security_group.balancer.id}"
+
+  cidr_blocks = ["192.168.9.0/24", "192.168.10.0/24"]
+}
+
 # external access
 resource "aws_elb" "mongo" {
   count                       = "${var.cluster_size}"

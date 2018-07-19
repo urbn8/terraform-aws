@@ -47,4 +47,7 @@ runcmd:
   # Fixes rsyslog using the wrong hostname
   - systemctl restart rsyslog
   - mount -a
+  - mkdir /mnt/db/mongodb
+  - chown mongodb:mongodb /mnt/db/mongodb
+  - service mongod restart
   - mv /tmp/keyfile /mnt/db/mongodPrimary/keyfile
