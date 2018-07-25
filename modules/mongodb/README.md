@@ -22,7 +22,25 @@ terraform apply
 
 ### Note EBS store
 
+Because we use template cloud to mount ebs into /mnt/db so that we need change permission for it
+
 ```
 chown mongodb:mongodb /mnt/db/mongodb/
 
 ```
+
+### Log rotate for mongodb
+
+Rotate the log file by issuing the logRotate command from the admin database in a mongo shell:
+
+```
+use admin
+db.adminCommand( { logRotate : 1 } )
+
+```
+
+### Refer
+
+- https://docs.mongodb.com/manual/tutorial/rotate-log-files/
+- https://ash.berlintaylor.com/writings/2017/08/reusable-terraform-modules-extending-userdata/
+- https://stackoverflow.com/questions/43633329/mongodb-log-can-i-empty-this-file-without-error
