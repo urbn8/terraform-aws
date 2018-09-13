@@ -7,13 +7,11 @@ terraform {
 }
 
 module "mongodb" {
-  source               = "../../modules/mongodb"
-  environment          = "dev"
-  domain               = "urbn8.io"
-  vpc_id               = "vpc-efc99484"
-  dns_zone             = "Z14R93S7FNVUY1"
-  mongo_security_group = ["sg-3871dc54", "sg-014ce16d"]
-  ssh_security_group   = ["sg-014ce16d"]
+  source      = "../../modules/mongodb"
+  environment = "dev"
+  domain      = "urbn8.io"
+  vpc_id      = "vpc-efc99484"
+  dns_zone    = "Z14R93S7FNVUY1"
 
   # Allow each node can access mongodb
   bastion_security_group = "sg-3871dc54"

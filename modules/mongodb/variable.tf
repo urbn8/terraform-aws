@@ -10,9 +10,8 @@ variable "environment" {
   description = "Environment/production tier"
 }
 
-variable "private_subnets" {
+variable "subnet_ids" {
   type        = "list"
-  default     = ["subnet-36fff85d", "subnet-c30b76be", "subnet-58145715"]
   description = "List of private subnet IDs Mongo launches in"
 }
 
@@ -24,8 +23,12 @@ variable "region" {
 
 variable "vpc_id" {
   type        = "string"
-  default     = "vpc-be0353d5"
   description = "VPC ID of something we connect to somewhere"
+}
+
+variable "vpc_security_group_ids" {
+  type        = "list"
+  description = "VPC ID security of something we connect to somewhere"
 }
 
 ##Networking
@@ -41,29 +44,20 @@ variable "dns_zone" {
   description = "Route 53 zone id to create records in"
 }
 
-variable "mongo_security_group" {
-  type        = "list"
-  default     = ["sg-5e6fb632", "sg-c272abae"]
-  description = "list of security group ids to grant mongo access"
-}
-
-variable "ssh_security_group" {
-  type        = "list"
-  default     = ["sg-5e6fb632", "sg-c272abae"]
-  description = "list of security group ids to grant ssh access"
-}
-
-## App
-variable "bastion_security_group" {
-  type        = "string"
-  default     = "sg-c272abae"
-  description = "Security group allowing access from Bastion host"
+variable "ami_username" {
+  description = "describe your variable"
+  default     = "ubuntu"
 }
 
 variable "key_name" {
   type        = "string"
-  default     = "frankuft"
   description = "key pair name used with new ec2 instances"
+}
+
+variable "key_path" {
+  type        = "string"
+  description = "key pair used with new ec2 instances"
+  default     = "~/.ssh/frankfurt.pem"
 }
 
 variable "instance_type" {
@@ -95,7 +89,17 @@ variable "vol_size" {
   default     = "20"
 }
 
+variable "ami_id" {
+  type        = "string"
+  description = "AMI ID"
+}
+
 variable "domain" {
   description = "describe your variable"
   default     = "urbn8.io"
+}
+
+variable "replica_set" {
+  description = "describe your variable"
+  default     = "production-mgo"
 }

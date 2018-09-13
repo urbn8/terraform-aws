@@ -39,8 +39,18 @@ db.adminCommand( { logRotate : 1 } )
 
 ```
 
+###
+
+```
+cfg = rs.conf()
+cfg.members = [cfg.members[0] , cfg.members[1] , cfg.members[2]]
+rs.reconfig(cfg, {force : true})
+
+
 ### Refer
 
 - https://docs.mongodb.com/manual/tutorial/rotate-log-files/
 - https://ash.berlintaylor.com/writings/2017/08/reusable-terraform-modules-extending-userdata/
 - https://stackoverflow.com/questions/43633329/mongodb-log-can-i-empty-this-file-without-error
+- https://docs.mongodb.com/manual/tutorial/reconfigure-replica-set-with-unavailable-members/
+- https://github.com/cgomestw/tf-mongodb-replica/blob/master/modules/cluster/scripts/bootstrap-replset.sh

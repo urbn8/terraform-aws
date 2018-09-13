@@ -7,19 +7,18 @@ terraform {
 }
 
 module "mongodb" {
-  source               = "../../modules/mongodb"
-  environment          = "staging"
-  domain               = "urbn8.io"
-  vpc_id               = "vpc-efc99484"
-  dns_zone             = "ZTSLDH58UVUDZ"
-  mongo_security_group = ["sg-3871dc54", "sg-014ce16d"]
-  ssh_security_group   = ["sg-014ce16d"]
+  source                 = "../../modules/mongodb"
+  environment            = "staging"
+  domain                 = "urbn8.io"
+  vpc_id                 = "vpc-efc99484"
+  dns_zone               = "ZTSLDH58UVUDZ"
+  ami_id                 = "ami-0adbe2a35a4b9fb93"
+  vpc_security_group_ids = ["sg-a77cd1cb", "sg-014ce16d", "sg-3871dc54", "sg-05ec5a4c8be661b91"]
 
-  # Allow each node can access mongodb
-  bastion_security_group = "sg-3871dc54"
-  key_name               = "frankfurt"
-  private_subnets        = ["subnet-2b616140", "subnet-4b9de236", "subnet-82216ccf"]
-  vol_size               = "10"
+  instance_type = "c4.large"
+  key_name      = "frankfurt"
+  subnet_ids    = ["subnet-c35f5fa8", "subnet-aea5dad3", "subnet-77115c3a"]
+  vol_size      = "10"
 }
 
 module "slack" {
