@@ -14,7 +14,6 @@ resource "aws_instance" "mongodb" {
 
   vpc_security_group_ids = "${var.vpc_security_group_ids}"
 
-  #user_data              = "${data.template_file.userdata.rendered}"
   user_data = "${file("${path.module}/files/attach_ebs.sh")}"
   key_name  = "${var.key_name}"
   subnet_id = "${element(var.subnet_ids, count.index)}"
@@ -34,8 +33,16 @@ resource "aws_instance" "mongodb" {
   lifecycle {
     prevent_destroy = false
   }
+
+  tags {
+    Name        = "mongodb-${count.index}"
+    Infra       = "${var.domain}"
+    Environment = "${var.environment}"
+    Terraformed = "true"
+  }
 }
 
+## Config mongodb repicate
 resource "null_resource" "configuration" {
   count = "${var.cluster_size}"
 

@@ -35,12 +35,11 @@ variable "vpc_security_group_ids" {
 variable "dns_name" {
   type        = "string"
   description = "Hostname prefix for route53 record creation"
-  default     = "mongodb-elb"
+  default     = "mongodb"
 }
 
 variable "dns_zone" {
   type        = "string"
-  default     = "Z28IYATELF0OPV"
   description = "Route 53 zone id to create records in"
 }
 
@@ -64,17 +63,6 @@ variable "instance_type" {
   type        = "string"
   description = "AWS EC2 instance type to use for creating cluster nodes"
   default     = "t2.nano"
-}
-
-variable "replica_set_name" {
-  type = "map"
-
-  default = {
-    "dev"     = "mongo-rs"
-    "staging" = "mongo-rs"
-  }
-
-  description = "Mongo replica set name"
 }
 
 variable "root_vol_size" {
