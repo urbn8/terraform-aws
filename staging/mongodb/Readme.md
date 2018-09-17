@@ -1,4 +1,4 @@
-### Manual setup after deploy terraform
+### Manual setup(No need)
 
 Waiting aws launch load balancer and ec2 then login to node-1 and init mongodb replication with following command below:
 
