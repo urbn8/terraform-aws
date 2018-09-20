@@ -68,13 +68,11 @@ variable "instance_type" {
 variable "root_vol_size" {
   type        = "string"
   description = "Space (in Gigabytes) to give to the instance root disk"
-  default     = "8"
 }
 
 variable "vol_size" {
   type        = "string"
   description = "Space (in Gigabytes) to give to MongoDB"
-  default     = "20"
 }
 
 variable "ami_id" {

@@ -12,7 +12,7 @@ module "mongodb" {
   domain                 = "urbn8.io"
   vpc_id                 = "vpc-efc99484"
   dns_zone               = "Z14R93S7FNVUY1"
-  ami_id                 = "ami-0adbe2a35a4b9fb93"
+  ami_id                 = "ami-0988e4ddedd052247"
   vpc_security_group_ids = ["sg-a77cd1cb", "sg-014ce16d", "sg-3871dc54", "sg-05ec5a4c8be661b91"]
 
   instance_type = "i3.large"
