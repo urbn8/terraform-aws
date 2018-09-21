@@ -19,6 +19,7 @@ module "mongodb" {
   key_name      = "frankfurt"
   subnet_ids    = ["subnet-c35f5fa8", "subnet-aea5dad3", "subnet-77115c3a"]
   vol_size      = "10"
+  root_vol_size = "20"
 }
 
 module "slack" {
