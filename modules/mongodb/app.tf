@@ -62,12 +62,6 @@ resource "null_resource" "configuration" {
     destination = "/tmp"
   }
 
-  # copy config files
-  # provisioner "file" {
-  #   source      = "${template_dir.config.destination_dir}"
-  #   destination = "/tmp"
-  # }
-
   # execute scripts
   provisioner "remote-exec" {
     inline = [
